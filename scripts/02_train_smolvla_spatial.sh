@@ -5,15 +5,19 @@ cd "$(dirname "$0")/.."
 source configs/env.sh
 mkdir -p "$OUTPUT_ROOT"
 
-# 5090-friendly baseline. If OOM, reduce --batch_size to 2.
-# Important: use --policy.path to fine-tune the pretrained SmolVLA policy,
-# including its pretrained action expert, rather than initializing a fresh policy.
+# Structure-innovation baseline:
+# - load pretrained VLM weights
+# - initialize a fresh vanilla action expert from config
+# - train the action expert on official LIBERO data/protocol
+# If OOM on a single 5090, reduce --batch_size to 2.
 lerobot-train \
-  --policy.path=lerobot/smolvla_base \
+  --policy.type=smolvla \
+  --policy.repo_id="$HF_USER/smolvla-libero-spatial-scratch-expert" \
+  --policy.load_vlm_weights=true \
   --dataset.repo_id=HuggingFaceVLA/libero \
   --env.type=libero \
   --env.task=libero_spatial \
-  --output_dir="$OUTPUT_ROOT/smolvla_libero_spatial" \
+  --output_dir="$OUTPUT_ROOT/smolvla_libero_spatial_scratch_expert" \
   --steps=20000 \
   --batch_size=4 \
   --eval.batch_size=1 \
