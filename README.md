@@ -50,11 +50,22 @@ The main closed-loop LIBERO-Spatial report is in:
 docs/EXPERIMENT_REPORT.md
 ```
 
-Best setting measured so far:
+Best MoE setting measured so far:
 
 ```text
 MoE 20k, n_action_steps=10: 48/100 = 48.0%
-Baseline 20k, n_action_steps=10: 35/100 = 35.0%
+```
+
+Strongest vanilla baseline among tested horizons:
+
+```text
+Baseline 20k, n_action_steps=8: 44/100 = 44.0%
+```
+
+Largest same-horizon gain:
+
+```text
+n_action_steps=10: MoE 48.0% vs Baseline 35.0%, +13.0 points
 ```
 
 ## Research route
