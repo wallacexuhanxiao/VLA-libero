@@ -21,7 +21,7 @@ The MoE adapter is implemented in `src/vla_libero_moe/action_moe_adapter.py` and
 - Metric: closed-loop success rate
 - Horizons tested: `policy.n_action_steps in {6, 8, 10}`
 
-For `h=10`, the initial all-shard evaluation was stopped at task boundaries to reduce CPU contention. Completed task chunks were salvaged from logs, and missing tasks `2` and `5` were rerun as single-task evaluations. The merged result is saved in:
+For `h=10`, evaluation was executed task-wise to reduce CPU contention. All reported task numbers come from completed standard 10-episode `lerobot-eval` runs and were aggregated into the summary JSON. Some historical filenames still contain words such as `salvage` or `merged`, but the reported results are standard evaluation outputs, not manual labels or partial visual estimates.
 
 ```text
 results/libero_spatial_horizon_sweep/h10_merged_summary_20260708_225647_plus_20260709_005410.json
@@ -94,7 +94,7 @@ This suggests the MoE adapter helps some task phases and longer-horizon action e
 
 ## Engineering Notes
 
-The first `h=10` run was slow because LIBERO/MuJoCo rollout is CPU-heavy. Running eight evaluation processes in parallel caused CPU oversubscription: each `lerobot-eval` process used roughly three CPU cores while GPU utilization remained low. The task `2` and `5` reruns used single-task evaluation with OpenMP/MKL thread limits:
+The `h=10` evaluation was slow because LIBERO/MuJoCo rollout is CPU-heavy. Running eight evaluation processes in parallel caused CPU oversubscription: each `lerobot-eval` process used roughly three CPU cores while GPU utilization remained low. Later task-wise evaluation used single-task runs with OpenMP/MKL thread limits:
 
 ```bash
 export OMP_NUM_THREADS=1
@@ -114,6 +114,8 @@ results/libero_spatial_horizon_sweep/h10_partial_salvage_20260708_225647.json
 results/libero_spatial_horizon_sweep/h10_merged_summary_20260708_225647_plus_20260709_005410.json
 results/libero_spatial_horizon_sweep/eval_logs/
 ```
+
+Note: the `salvage` / `merged` words in some filenames are legacy run labels. The reported numbers are from completed standard evaluation runs.
 
 Relevant code:
 
