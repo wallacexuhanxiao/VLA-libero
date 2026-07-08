@@ -1,0 +1,402 @@
+{
+  "timestamp": "20260708_225647",
+  "note": "Partial h10 task-level salvage before killing shards that completed at least one 10-episode task. Success counts are parsed from tqdm running_success_rate at 10/10 task boundary; partial next tasks are intentionally discarded and should be rerun.",
+  "completed_tasks": [
+    {
+      "model": "moe20",
+      "shard": 2,
+      "task_id": 6,
+      "episodes": 10,
+      "successes": 8,
+      "success_rate": 80.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_2/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 2,
+      "task_id": 7,
+      "episodes": 10,
+      "successes": 8,
+      "success_rate": 80.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_2/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 3,
+      "task_id": 8,
+      "episodes": 10,
+      "successes": 6,
+      "success_rate": 60.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_3/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 3,
+      "task_id": 9,
+      "episodes": 10,
+      "successes": 6,
+      "success_rate": 60.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_3/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 0,
+      "task_id": 0,
+      "episodes": 10,
+      "successes": 5,
+      "success_rate": 50.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_0/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 0,
+      "task_id": 1,
+      "episodes": 10,
+      "successes": 5,
+      "success_rate": 50.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_0/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 0,
+      "task_id": 0,
+      "episodes": 10,
+      "successes": 5,
+      "success_rate": 50.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_0/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 0,
+      "task_id": 1,
+      "episodes": 10,
+      "successes": 5,
+      "success_rate": 50.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_0/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 1,
+      "task_id": 3,
+      "episodes": 10,
+      "successes": 3,
+      "success_rate": 30.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_1/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 1,
+      "task_id": 4,
+      "episodes": 10,
+      "successes": 3,
+      "success_rate": 30.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_1/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 2,
+      "task_id": 6,
+      "episodes": 10,
+      "successes": 2,
+      "success_rate": 20.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_2/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 2,
+      "task_id": 7,
+      "episodes": 10,
+      "successes": 2,
+      "success_rate": 20.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_2/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 3,
+      "task_id": 8,
+      "episodes": 10,
+      "successes": 5,
+      "success_rate": 50.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_3/eval.log"
+    },
+    {
+      "model": "baseline20",
+      "shard": 3,
+      "task_id": 9,
+      "episodes": 10,
+      "successes": 5,
+      "success_rate": 50.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/baseline20_h10_100ep_20260708_225647/shard_3/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 1,
+      "task_id": 3,
+      "episodes": 10,
+      "successes": 2,
+      "success_rate": 20.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_1/eval.log"
+    },
+    {
+      "model": "moe20",
+      "shard": 1,
+      "task_id": 4,
+      "episodes": 10,
+      "successes": 2,
+      "success_rate": 20.0,
+      "source_log": "/root/autodl-tmp/eval_logs/VLA-libero/moe20_h10_100ep_20260708_225647/shard_1/eval.log"
+    }
+  ],
+  "kill_sessions": [
+    {
+      "session": "moe20_h10_s2",
+      "model": "moe20",
+      "shard": 2,
+      "tasks": [
+        6,
+        7
+      ],
+      "completed_task_count": 2,
+      "remaining_tasks": [],
+      "reason": "all task-level chunks completed; waiting only for final aggregation maybe"
+    }
+  ],
+  "keep_sessions": [
+    {
+      "session": "baseline20_h10_s0",
+      "model": "baseline20",
+      "shard": 0,
+      "tasks": [
+        0,
+        1,
+        2
+      ],
+      "current_status": [
+        "80",
+        "8",
+        "10",
+        "50.0"
+      ]
+    },
+    {
+      "session": "baseline20_h10_s1",
+      "model": "baseline20",
+      "shard": 1,
+      "tasks": [
+        3,
+        4,
+        5
+      ],
+      "current_status": [
+        "70",
+        "7",
+        "10",
+        "28.6"
+      ]
+    },
+    {
+      "session": "baseline20_h10_s2",
+      "model": "baseline20",
+      "shard": 2,
+      "tasks": [
+        6,
+        7
+      ],
+      "current_status": [
+        "50",
+        "5",
+        "10",
+        "0.0"
+      ]
+    },
+    {
+      "session": "baseline20_h10_s3",
+      "model": "baseline20",
+      "shard": 3,
+      "tasks": [
+        8,
+        9
+      ],
+      "current_status": [
+        "60",
+        "6",
+        "10",
+        "33.3"
+      ]
+    },
+    {
+      "session": "moe20_h10_s0",
+      "model": "moe20",
+      "shard": 0,
+      "tasks": [
+        0,
+        1,
+        2
+      ],
+      "current_status": [
+        "80",
+        "8",
+        "10",
+        "62.5"
+      ]
+    },
+    {
+      "session": "moe20_h10_s1",
+      "model": "moe20",
+      "shard": 1,
+      "tasks": [
+        3,
+        4,
+        5
+      ],
+      "current_status": [
+        "60",
+        "6",
+        "10",
+        "16.7"
+      ]
+    },
+    {
+      "session": "moe20_h10_s3",
+      "model": "moe20",
+      "shard": 3,
+      "tasks": [
+        8,
+        9
+      ],
+      "current_status": [
+        "80",
+        "8",
+        "10",
+        "62.5"
+      ]
+    }
+  ],
+  "killed_sessions": [
+    {
+      "session": "baseline20_h10_s0",
+      "model": "baseline20",
+      "shard": 0,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        0,
+        1
+      ],
+      "remaining_tasks": [
+        2
+      ]
+    },
+    {
+      "session": "moe20_h10_s0",
+      "model": "moe20",
+      "shard": 0,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        0,
+        1
+      ],
+      "remaining_tasks": [
+        2
+      ]
+    },
+    {
+      "session": "baseline20_h10_s1",
+      "model": "baseline20",
+      "shard": 1,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        3,
+        4
+      ],
+      "remaining_tasks": [
+        5
+      ]
+    },
+    {
+      "session": "baseline20_h10_s2",
+      "model": "baseline20",
+      "shard": 2,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        6,
+        7
+      ],
+      "remaining_tasks": []
+    },
+    {
+      "session": "baseline20_h10_s3",
+      "model": "baseline20",
+      "shard": 3,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        8,
+        9
+      ],
+      "remaining_tasks": []
+    },
+    {
+      "session": "moe20_h10_s1",
+      "model": "moe20",
+      "shard": 1,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        3,
+        4
+      ],
+      "remaining_tasks": [
+        5
+      ]
+    }
+  ],
+  "latest_scan_keep": [],
+  "latest_scan_kill_candidates": [
+    {
+      "session": "baseline20_h10_s1",
+      "model": "baseline20",
+      "shard": 1,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        3,
+        4
+      ],
+      "remaining_tasks": [
+        5
+      ]
+    },
+    {
+      "session": "baseline20_h10_s2",
+      "model": "baseline20",
+      "shard": 2,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        6,
+        7
+      ],
+      "remaining_tasks": []
+    },
+    {
+      "session": "baseline20_h10_s3",
+      "model": "baseline20",
+      "shard": 3,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        8,
+        9
+      ],
+      "remaining_tasks": []
+    },
+    {
+      "session": "moe20_h10_s1",
+      "model": "moe20",
+      "shard": 1,
+      "completed_task_count": 2,
+      "completed_tasks": [
+        3,
+        4
+      ],
+      "remaining_tasks": [
+        5
+      ]
+    }
+  ]
+}

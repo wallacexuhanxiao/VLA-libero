@@ -1,0 +1,160 @@
+{
+  "main_ts": "20260708_225647",
+  "rerun_ts": "20260709_005410",
+  "merged": {
+    "baseline20": {
+      "0": {
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 50.0,
+        "source": "salvage"
+      },
+      "1": {
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 50.0,
+        "source": "salvage"
+      },
+      "3": {
+        "successes": 3,
+        "episodes": 10,
+        "success_rate": 30.0,
+        "source": "salvage"
+      },
+      "4": {
+        "successes": 3,
+        "episodes": 10,
+        "success_rate": 30.0,
+        "source": "salvage"
+      },
+      "6": {
+        "successes": 2,
+        "episodes": 10,
+        "success_rate": 20.0,
+        "source": "salvage"
+      },
+      "7": {
+        "successes": 2,
+        "episodes": 10,
+        "success_rate": 20.0,
+        "source": "salvage"
+      },
+      "8": {
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 50.0,
+        "source": "salvage"
+      },
+      "9": {
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 50.0,
+        "source": "salvage"
+      },
+      "2": {
+        "successes": 3,
+        "episodes": 10,
+        "success_rate": 30.0,
+        "source": "rerun"
+      },
+      "5": {
+        "successes": 2,
+        "episodes": 10,
+        "success_rate": 20.0,
+        "source": "rerun"
+      }
+    },
+    "moe20": {
+      "6": {
+        "successes": 8,
+        "episodes": 10,
+        "success_rate": 80.0,
+        "source": "salvage"
+      },
+      "7": {
+        "successes": 8,
+        "episodes": 10,
+        "success_rate": 80.0,
+        "source": "salvage"
+      },
+      "8": {
+        "successes": 6,
+        "episodes": 10,
+        "success_rate": 60.0,
+        "source": "salvage"
+      },
+      "9": {
+        "successes": 6,
+        "episodes": 10,
+        "success_rate": 60.0,
+        "source": "salvage"
+      },
+      "0": {
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 50.0,
+        "source": "salvage"
+      },
+      "1": {
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 50.0,
+        "source": "salvage"
+      },
+      "3": {
+        "successes": 2,
+        "episodes": 10,
+        "success_rate": 20.0,
+        "source": "salvage"
+      },
+      "4": {
+        "successes": 2,
+        "episodes": 10,
+        "success_rate": 20.0,
+        "source": "salvage"
+      },
+      "2": {
+        "successes": 6,
+        "episodes": 10,
+        "success_rate": 60.0,
+        "source": "rerun"
+      },
+      "5": {
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "source": "rerun"
+      }
+    }
+  },
+  "rerun_results": {
+    "baseline20_task2": {
+      "done": true,
+      "successes": 3,
+      "episodes": 10,
+      "success_rate": 30.0,
+      "eval_s": 121.49142146110535
+    },
+    "baseline20_task5": {
+      "done": true,
+      "successes": 2,
+      "episodes": 10,
+      "success_rate": 20.0,
+      "eval_s": 128.31881141662598
+    },
+    "moe20_task2": {
+      "done": true,
+      "successes": 6,
+      "episodes": 10,
+      "success_rate": 60.0,
+      "eval_s": 100.78190660476685
+    },
+    "moe20_task5": {
+      "done": true,
+      "successes": 0,
+      "episodes": 10,
+      "success_rate": 0.0,
+      "eval_s": 145.3263862133026
+    }
+  }
+}

@@ -1,13 +1,13 @@
 # VLA-libero
 
-Official LeRobot + LIBERO + SmolVLA baseline project, with a later path toward Flow Matching action heads.
+LeRobot + LIBERO + SmolVLA baseline project, with an action-token MoE adapter experiment.
 
 ## Goal
 
 1. Reproduce official LIBERO evaluation with a known checkpoint.
 2. Fine-tune official SmolVLA on LIBERO-Spatial using LeRobot.
 3. Establish a working closed-loop baseline.
-4. Only after the baseline works, modify or replace the action head with a Flow Matching variant.
+4. Compare a vanilla SmolVLA action expert against a residual dense-MoE action-token adapter.
 
 ## Why this repo exists
 
@@ -27,8 +27,11 @@ scripts/
 docs/
   SOP.md
   experiment_log_template.md
+  EXPERIMENT_REPORT.md
 experiments/
   .gitkeep
+results/
+  libero_spatial_horizon_sweep/
 ```
 
 ## Quick start
@@ -37,6 +40,21 @@ experiments/
 bash scripts/01_eval_pi05_libero_spatial.sh
 bash scripts/02_train_smolvla_spatial.sh
 bash scripts/03_eval_smolvla_spatial.sh
+```
+
+## Current result
+
+The main closed-loop LIBERO-Spatial report is in:
+
+```text
+docs/EXPERIMENT_REPORT.md
+```
+
+Best setting measured so far:
+
+```text
+MoE 20k, n_action_steps=10: 48/100 = 48.0%
+Baseline 20k, n_action_steps=10: 35/100 = 35.0%
 ```
 
 ## Research route
@@ -48,7 +66,7 @@ Official SmolVLA fine-tuning
         ↓
 Stable closed-loop LIBERO success-rate baseline
         ↓
-Replace only the action head / action expert with Flow Matching
+Insert a lightweight MoE adapter on action-token hidden states
         ↓
-Compare success rate, smoothness, and robustness under the same official eval
+Compare closed-loop success rate under the same official eval
 ```

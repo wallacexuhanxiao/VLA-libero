@@ -20,3 +20,4 @@ runs/
 *.tar.gz
 
 third_party/lerobot/
+third_party/

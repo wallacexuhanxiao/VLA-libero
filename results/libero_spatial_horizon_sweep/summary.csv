@@ -1,0 +1,7 @@
+horizon,model,successes,episodes,success_rate
+6,baseline20,41,100,0.41
+6,moe20,44,100,0.44
+8,baseline20,44,100,0.44
+8,moe20,42,100,0.42
+10,baseline20,35,100,0.35
+10,moe20,48,100,0.48

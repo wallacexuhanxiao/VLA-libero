@@ -1,22 +1,25 @@
 #!/usr/bin/env bash
 set -euo pipefail
-
 cd "$(dirname "$0")/.."
-
+source configs/env.sh
 mkdir -p third_party
-if [ ! -d third_party/lerobot/.git ]; then
-  git clone https://github.com/huggingface/lerobot.git third_party/lerobot
+if [ ! -e third_party/lerobot ]; then
+  if [ -d /root/vla_project/lerobot/.git ]; then
+    ln -s /root/vla_project/lerobot third_party/lerobot
+  else
+    git clone https://github.com/huggingface/lerobot.git third_party/lerobot
+  fi
 fi
-
-cd third_party/lerobot
-
-python -m pip install --upgrade pip setuptools wheel
-pip install -e ".[smolvla]"
-pip install -e ".[libero]"
-
-python - <<'PY'
+python - <<'PYEOF'
 import os
-print("MUJOCO_GL =", os.environ.get("MUJOCO_GL", "<not set>"))
+import torch
 import lerobot
-print("lerobot import: OK")
-PY
+import libero
+import mujoco
+print('python: OK')
+print('torch:', torch.__version__, 'cuda:', torch.version.cuda, 'available:', torch.cuda.is_available())
+print('lerobot:', lerobot.__file__)
+print('libero:', libero.__file__)
+print('mujoco:', mujoco.__version__)
+print('MUJOCO_GL =', os.environ.get('MUJOCO_GL'))
+PYEOF
