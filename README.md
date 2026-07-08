@@ -34,12 +34,6 @@ experiments/
 ## Quick start
 
 ```bash
-conda create -n lerobot python=3.10 -y
-conda activate lerobot
-
-bash scripts/00_install_lerobot.sh
-source configs/env.sh
-
 bash scripts/01_eval_pi05_libero_spatial.sh
 bash scripts/02_train_smolvla_spatial.sh
 bash scripts/03_eval_smolvla_spatial.sh
