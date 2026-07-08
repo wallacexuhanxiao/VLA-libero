@@ -6,11 +6,10 @@ source configs/env.sh
 mkdir -p "$OUTPUT_ROOT"
 
 # 5090-friendly baseline. If OOM, reduce --batch_size to 2.
-# This uses official LeRobot LIBERO data/environment protocol.
+# Important: use --policy.path to fine-tune the pretrained SmolVLA policy,
+# including its pretrained action expert, rather than initializing a fresh policy.
 lerobot-train \
-  --policy.type=smolvla \
-  --policy.repo_id="$HF_USER/smolvla-libero-spatial-test" \
-  --policy.load_vlm_weights=true \
+  --policy.path=lerobot/smolvla_base \
   --dataset.repo_id=HuggingFaceVLA/libero \
   --env.type=libero \
   --env.task=libero_spatial \
