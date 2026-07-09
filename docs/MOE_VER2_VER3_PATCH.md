@@ -8,7 +8,7 @@ This document adds two follow-up MoE variants after the current Ver1 residual ac
 |---|---|---|---|
 | Ver1 | Pre-expert residual MoE adapter | After `action_time_mlp`, before action expert Transformer | Lightweight action-token modulation |
 | Ver2 | Action expert FFN-MoE | Replaces `layer.mlp` inside the action expert Transformer | Closer to standard LLM MoE |
-| Ver3 | Phase/time-aware MoE adapter | After `action_time_mlp`, before action expert Transformer | Router uses action position + Flow Matching timestep |
+| Ver3 | CTA-MoE: Chunk-Time-Aware MoE adapter | After `action_time_mlp`, before action expert Transformer | Router uses action chunk position + Flow Matching timestep |
 
 ## Files added
 
@@ -18,6 +18,8 @@ src/vla_libero_moe/phase_aware_moe_adapter.py
 scripts/07_train_ffn_moe_spatial.sh
 scripts/08_train_phase_moe_spatial.sh
 ```
+
+Note: the Ver3 implementation file is still named `phase_aware_moe_adapter.py` for backward compatibility with earlier experiments, but the method name used in documentation is now **CTA-MoE**. This is more precise because the router does not use ground-truth manipulation phase labels; it uses action chunk position and Flow Matching timestep as routing context.
 
 ## Ver2: action expert FFN-MoE
 
@@ -110,7 +112,7 @@ if ffn_moe_aux_loss is not None:
 bash scripts/07_train_ffn_moe_spatial.sh
 ```
 
-## Ver3: phase/time-aware MoE adapter
+## Ver3: CTA-MoE, Chunk-Time-Aware MoE adapter
 
 ### Architecture
 
@@ -123,9 +125,9 @@ Noisy action tokens + flow timestep
         ↓
 action_time_mlp
         ↓
-PhaseAwareActionTokenMoEAdapter  ← Ver3
+CTA-MoE adapter  ← Ver3
         ├─ action-token hidden state
-        ├─ token position embedding, proxy for action phase
+        ├─ token position embedding inside the action chunk
         └─ Flow Matching timestep embedding
         ↓
 Original Action Expert Transformer
@@ -135,7 +137,7 @@ action_out_proj
 predicted velocity v_t
 ```
 
-Ver3 keeps the stable Ver1 insertion point, but makes routing phase-aware. The router sees both the action token index inside the chunk and the current Flow Matching timestep.
+Ver3 keeps the stable Ver1 insertion point, but makes routing aware of chunk position and Flow Matching time. The router sees both the action token index inside the chunk and the current denoising timestep. This is more accurate than calling it fully phase-aware, because no ground-truth manipulation phase labels are used.
 
 ### Patch local LeRobot
 
@@ -227,7 +229,7 @@ Run these in this order:
 
 ```text
 1. Ver1 residual pre-expert MoE adapter     scripts/06_train_moe_spatial.sh
-2. Ver3 phase/time-aware MoE adapter        scripts/08_train_phase_moe_spatial.sh
+2. Ver3 CTA-MoE adapter                     scripts/08_train_phase_moe_spatial.sh
 3. Ver2 action expert FFN-MoE               scripts/07_train_ffn_moe_spatial.sh
 ```
 
@@ -251,6 +253,6 @@ horizon sweep = n_action_steps in {6, 8, 10}
 Initial success criteria:
 
 ```text
-Ver3 is promising if it keeps or improves Ver1's h=10 result while reducing the task 3/4/5 failure.
+Ver3 CTA-MoE is promising if it keeps or improves Ver1's h=10 result while reducing the task 3/4/5 failure.
 Ver2 is promising if it beats vanilla at the same horizon without severe instability.
 ```
