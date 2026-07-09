@@ -5,19 +5,17 @@ from torch import nn
 
 
 class PhaseAwareActionTokenMoEAdapter(nn.Module):
-    """CTRA: Chunk-Time Routed Adapter for SmolVLA action tokens.
+    """Routed Multi-MLP Adapter for SmolVLA action tokens.
 
     This is Ver3 of the action-modeling route. The implementation keeps the
-    lightweight pre-action-expert adapter placement from Ver1, but makes the
-    router aware of:
+    lightweight pre-action-expert adapter placement from Ver1, but uses a router
+    to combine multiple MLP branches for residual action-token modulation.
 
-    - action-token position inside the chunk;
-    - Flow Matching timestep, which tells the router which denoising stage it is in.
-
-    Earlier docs called this a phase-aware MoE adapter. CTRA is more precise:
-    the module does not use ground-truth manipulation phase labels, does not
-    replace Transformer FFNs, and does not use sparse top-k MoE routing. It is a
-    residual routed adapter with multiple MLP branches.
+    Implementation detail: the current router context uses action-token hidden
+    state, action-token position inside the chunk, and Flow Matching timestep.
+    These details are intentionally not part of the public method name so that
+    the method is described generically as a routed multi-MLP adapter rather than
+    as a standard MoE, phase-aware expert, or Transformer FFN replacement.
 
     Shape:
         x: [batch, chunk_size, expert_hidden_size]
