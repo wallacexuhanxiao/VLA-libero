@@ -5,17 +5,19 @@ from torch import nn
 
 
 class PhaseAwareActionTokenMoEAdapter(nn.Module):
-    """CTA-MoE: Chunk-Time-Aware residual dense-MoE adapter for SmolVLA action tokens.
+    """CTRA: Chunk-Time Routed Adapter for SmolVLA action tokens.
 
-    This is Ver3 of the MoE route. The implementation keeps the lightweight
-    pre-action-expert adapter placement from Ver1, but makes the router aware of:
+    This is Ver3 of the action-modeling route. The implementation keeps the
+    lightweight pre-action-expert adapter placement from Ver1, but makes the
+    router aware of:
 
     - action-token position inside the chunk;
     - Flow Matching timestep, which tells the router which denoising stage it is in.
 
-    Earlier docs called this a phase-aware adapter, but CTA-MoE is more precise:
-    the module does not use ground-truth manipulation phase labels. Instead, it
-    uses chunk position and flow timestep as routing context.
+    Earlier docs called this a phase-aware MoE adapter. CTRA is more precise:
+    the module does not use ground-truth manipulation phase labels, does not
+    replace Transformer FFNs, and does not use sparse top-k MoE routing. It is a
+    residual routed adapter with multiple MLP branches.
 
     Shape:
         x: [batch, chunk_size, expert_hidden_size]
@@ -98,8 +100,8 @@ class PhaseAwareActionTokenMoEAdapter(nn.Module):
         router_logits = self.router(router_context)
         router_probs = torch.softmax(router_logits, dim=-1)  # [B, T, K]
 
-        expert_outputs = torch.stack([expert(x) for expert in self.experts], dim=-2)
-        mixed = torch.sum(router_probs.unsqueeze(-1) * expert_outputs, dim=-2)
+        branch_outputs = torch.stack([expert(x) for expert in self.experts], dim=-2)
+        mixed = torch.sum(router_probs.unsqueeze(-1) * branch_outputs, dim=-2)
 
         mean_probs = router_probs.mean(dim=(0, 1))
         balance_loss = self.num_experts * torch.sum(mean_probs * mean_probs) - 1.0
