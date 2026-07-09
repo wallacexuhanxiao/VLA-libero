@@ -5,13 +5,17 @@ from torch import nn
 
 
 class PhaseAwareActionTokenMoEAdapter(nn.Module):
-    """Phase/time-aware residual dense-MoE adapter for SmolVLA action tokens.
+    """CTA-MoE: Chunk-Time-Aware residual dense-MoE adapter for SmolVLA action tokens.
 
-    This is Ver3 of the MoE route. It keeps the lightweight pre-action-expert
-    adapter placement from Ver1, but makes the router aware of:
+    This is Ver3 of the MoE route. The implementation keeps the lightweight
+    pre-action-expert adapter placement from Ver1, but makes the router aware of:
 
-    - action-token position inside the chunk, which is a proxy for manipulation phase;
+    - action-token position inside the chunk;
     - Flow Matching timestep, which tells the router which denoising stage it is in.
+
+    Earlier docs called this a phase-aware adapter, but CTA-MoE is more precise:
+    the module does not use ground-truth manipulation phase labels. Instead, it
+    uses chunk position and flow timestep as routing context.
 
     Shape:
         x: [batch, chunk_size, expert_hidden_size]
