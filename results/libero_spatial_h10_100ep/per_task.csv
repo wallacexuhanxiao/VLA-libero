@@ -1,0 +1,51 @@
+model_id,model_name,task_id,shard,episodes_used,success_count,success_rate,successes
+baseline_20k,Baseline SmolVLA action expert,0,s0,10,5,0.5,1010101010
+baseline_20k,Baseline SmolVLA action expert,1,s0,10,4,0.4,1101001000
+baseline_20k,Baseline SmolVLA action expert,2,s0,10,4,0.4,0011100001
+baseline_20k,Baseline SmolVLA action expert,3,s1,10,3,0.3,0101000010
+baseline_20k,Baseline SmolVLA action expert,4,s1,10,2,0.2,0000100001
+baseline_20k,Baseline SmolVLA action expert,5,s2,10,2,0.2,0001000010
+baseline_20k,Baseline SmolVLA action expert,6,s2,10,5,0.5,0011101001
+baseline_20k,Baseline SmolVLA action expert,7,s3,10,6,0.6,1011010110
+baseline_20k,Baseline SmolVLA action expert,8,s3,10,6,0.6,0111001011
+baseline_20k,Baseline SmolVLA action expert,9,s3,10,7,0.7,1101111100
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,0,s0,10,5,0.5,1011110000
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,1,s0,10,8,0.8,1011011111
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,2,s0,10,4,0.4,0100010110
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,3,s1,10,2,0.2,0100000001
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,4,s1,10,5,0.5,0110101010
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,5,s2,10,0,0.0,0000000000
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,6,s2,10,5,0.5,1001110001
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,7,s3,10,6,0.6,1011100011
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,8,s3,10,3,0.3,1000000011
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,9,s3,10,5,0.5,0011011100
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,0,s0,10,5,0.5,1001110100
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,1,s0,10,4,0.4,0101101000
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,2,s0,10,4,0.4,0100010110
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,3,s1,10,2,0.2,0100010000
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,4,s1,10,1,0.1,0000000010
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,5,s2,10,2,0.2,0000000101
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,6,s2,10,7,0.7,0101011111
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,7,s3,10,6,0.6,1001110101
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,8,s3,10,4,0.4,0100010011
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,9,s3,10,4,0.4,1001000011
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,0,s0,10,8,0.8,1101111011
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,1,s0,10,6,0.6,1101100101
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,2,s0,10,5,0.5,1010101001
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,3,s1,10,6,0.6,1111110000
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,4,s1,10,4,0.4,1010110000
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,5,s2,10,6,0.6,1000111101
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,6,s2,10,3,0.3,0100100001
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,7,s3,10,2,0.2,0100100000
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,8,s3,10,7,0.7,1100110111
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,9,s3,10,4,0.4,0011000011
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,0,s0,10,5,0.5,1010100110
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,1,s0,10,2,0.2,1100000000
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,2,s0,10,1,0.1,0000000100
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,3,s1,10,2,0.2,0100010000
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,4,s1,10,3,0.3,0000101100
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,5,s2,10,3,0.3,0100010001
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,6,s2,10,4,0.4,0001010011
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,7,s3,10,6,0.6,0101110011
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,8,s3,10,4,0.4,1100010010
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,9,s3,10,6,0.6,0011011110

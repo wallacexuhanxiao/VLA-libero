@@ -1,0 +1,176 @@
+{
+  "per_task": [
+    {
+      "task_group": "libero_spatial",
+      "task_id": 3,
+      "metrics": {
+        "sum_rewards": [
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "max_rewards": [
+          0.0,
+          1.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0
+        ],
+        "successes": [
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false
+        ],
+        "video_paths": [
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_0.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_1.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_2.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_3.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_4.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_5.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_6.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_7.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_8.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_9.mp4"
+        ],
+        "predicted_video_paths": []
+      }
+    },
+    {
+      "task_group": "libero_spatial",
+      "task_id": 4,
+      "metrics": {
+        "sum_rewards": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "max_rewards": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "successes": [
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          false,
+          true
+        ],
+        "video_paths": [
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_0.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_1.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_2.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_3.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_4.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_5.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_6.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_7.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_8.mp4",
+          "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_9.mp4"
+        ],
+        "predicted_video_paths": []
+      }
+    }
+  ],
+  "per_group": {
+    "libero_spatial": {
+      "avg_sum_reward": 0.25,
+      "avg_max_reward": 0.25,
+      "pc_success": 25.0,
+      "n_episodes": 20,
+      "video_paths": [
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_0.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_1.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_2.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_3.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_4.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_5.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_6.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_7.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_8.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_9.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_0.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_1.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_2.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_3.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_4.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_5.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_6.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_7.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_8.mp4",
+        "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_9.mp4"
+      ],
+      "predicted_video_paths": []
+    }
+  },
+  "overall": {
+    "avg_sum_reward": 0.25,
+    "avg_max_reward": 0.25,
+    "pc_success": 25.0,
+    "n_episodes": 20,
+    "eval_s": 370.2427296638489,
+    "eval_ep_s": 18.51213653087616,
+    "video_paths": [
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_0.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_1.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_2.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_3.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_4.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_5.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_6.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_7.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_8.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_3/eval_episode_9.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_0.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_1.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_2.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_3.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_4.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_5.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_6.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_7.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_8.mp4",
+      "/root/autodl-tmp/outputs/VLA-libero/eval_baseline_20k_h10/s1/videos/libero_spatial_4/eval_episode_9.mp4"
+    ],
+    "predicted_video_paths": []
+  }
+}

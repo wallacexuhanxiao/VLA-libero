@@ -44,6 +44,7 @@ experiments/
   .gitkeep
 results/
   libero_spatial_horizon_sweep/
+  libero_spatial_h10_100ep/
 ```
 
 ## Quick start
@@ -62,22 +63,28 @@ The main closed-loop LIBERO-Spatial report is in:
 docs/EXPERIMENT_REPORT.md
 ```
 
-Best MoE setting measured so far:
+Best action-modeling variant measured so far:
 
 ```text
-MoE 20k, n_action_steps=10: 48/100 = 48.0%
+Routed Multi-MLP Adapter 20k, n_action_steps=10: 51/100 = 51.0%
 ```
 
-Strongest vanilla baseline among tested horizons:
+Matched-horizon vanilla baseline:
 
 ```text
-Baseline 20k, n_action_steps=8: 44/100 = 44.0%
+Baseline 20k, n_action_steps=10: 44/100 = 44.0%
 ```
 
-Largest same-horizon gain:
+Main same-horizon gain:
 
 ```text
-n_action_steps=10: MoE 48.0% vs Baseline 35.0%, +13.0 points
+n_action_steps=10: Routed Multi-MLP Adapter 51.0% vs Baseline 44.0%, +7.0 points
+```
+
+The machine-readable rollout results are stored in:
+
+```text
+results/libero_spatial_h10_100ep/
 ```
 
 ## Action-modeling variants

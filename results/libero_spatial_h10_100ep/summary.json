@@ -1,0 +1,590 @@
+{
+  "protocol": {
+    "suite": "libero_spatial",
+    "checkpoint_steps": 20000,
+    "n_action_steps": 10,
+    "tasks": 10,
+    "episodes_per_task": 10,
+    "episodes_total_per_model": 100,
+    "note": "For comparability, each task uses the first 10 recorded episodes. This matters for Ver2, whose original shard outputs included extra episodes for some tasks."
+  },
+  "summary": [
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "checkpoint_steps": 20000,
+      "suite": "libero_spatial",
+      "n_action_steps": 10,
+      "tasks": 10,
+      "episodes_per_task": 10,
+      "episodes_total": 100,
+      "success_count": 44,
+      "success_rate": 0.44,
+      "macro_task_success_rate": 0.44,
+      "min_task_success_rate": 0.2,
+      "max_task_success_rate": 0.7
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "checkpoint_steps": 20000,
+      "suite": "libero_spatial",
+      "n_action_steps": 10,
+      "tasks": 10,
+      "episodes_per_task": 10,
+      "episodes_total": 100,
+      "success_count": 43,
+      "success_rate": 0.43,
+      "macro_task_success_rate": 0.43,
+      "min_task_success_rate": 0.0,
+      "max_task_success_rate": 0.8
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "checkpoint_steps": 20000,
+      "suite": "libero_spatial",
+      "n_action_steps": 10,
+      "tasks": 10,
+      "episodes_per_task": 10,
+      "episodes_total": 100,
+      "success_count": 39,
+      "success_rate": 0.39,
+      "macro_task_success_rate": 0.39,
+      "min_task_success_rate": 0.1,
+      "max_task_success_rate": 0.7
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "checkpoint_steps": 20000,
+      "suite": "libero_spatial",
+      "n_action_steps": 10,
+      "tasks": 10,
+      "episodes_per_task": 10,
+      "episodes_total": 100,
+      "success_count": 51,
+      "success_rate": 0.51,
+      "macro_task_success_rate": 0.51,
+      "min_task_success_rate": 0.2,
+      "max_task_success_rate": 0.8
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "checkpoint_steps": 20000,
+      "suite": "libero_spatial",
+      "n_action_steps": 10,
+      "tasks": 10,
+      "episodes_per_task": 10,
+      "episodes_total": 100,
+      "success_count": 36,
+      "success_rate": 0.36,
+      "macro_task_success_rate": 0.36,
+      "min_task_success_rate": 0.1,
+      "max_task_success_rate": 0.6
+    }
+  ],
+  "per_task": [
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 0,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "1010101010"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 1,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "1101001000"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 2,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0011100001"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 3,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 3,
+      "success_rate": 0.3,
+      "successes": "0101000010"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 4,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0000100001"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 5,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0001000010"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 6,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "0011101001"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 7,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "1011010110"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 8,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "0111001011"
+    },
+    {
+      "model_id": "baseline_20k",
+      "model_name": "Baseline SmolVLA action expert",
+      "task_id": 9,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 7,
+      "success_rate": 0.7,
+      "successes": "1101111100"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 0,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "1011110000"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 1,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 8,
+      "success_rate": 0.8,
+      "successes": "1011011111"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 2,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0100010110"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 3,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0100000001"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 4,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "0110101010"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 5,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 0,
+      "success_rate": 0.0,
+      "successes": "0000000000"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 6,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "1001110001"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 7,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "1011100011"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 8,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 3,
+      "success_rate": 0.3,
+      "successes": "1000000011"
+    },
+    {
+      "model_id": "ver1_residual_moe_20k",
+      "model_name": "Ver1 Residual MoE Adapter",
+      "task_id": 9,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "0011011100"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 0,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "1001110100"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 1,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0101101000"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 2,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0100010110"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 3,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0100010000"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 4,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 1,
+      "success_rate": 0.1,
+      "successes": "0000000010"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 5,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0000000101"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 6,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 7,
+      "success_rate": 0.7,
+      "successes": "0101011111"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 7,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "1001110101"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 8,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0100010011"
+    },
+    {
+      "model_id": "ver2_ffn_moe_20k",
+      "model_name": "Ver2 Action Expert FFN-MoE",
+      "task_id": 9,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "1001000011"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 0,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 8,
+      "success_rate": 0.8,
+      "successes": "1101111011"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 1,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "1101100101"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 2,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "1010101001"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 3,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "1111110000"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 4,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "1010110000"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 5,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "1000111101"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 6,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 3,
+      "success_rate": 0.3,
+      "successes": "0100100001"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 7,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0100100000"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 8,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 7,
+      "success_rate": 0.7,
+      "successes": "1100110111"
+    },
+    {
+      "model_id": "routed_multi_mlp_adapter_20k",
+      "model_name": "Routed Multi-MLP Adapter",
+      "task_id": 9,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0011000011"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 0,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 5,
+      "success_rate": 0.5,
+      "successes": "1010100110"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 1,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "1100000000"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 2,
+      "shard": "s0",
+      "episodes_used": 10,
+      "success_count": 1,
+      "success_rate": 0.1,
+      "successes": "0000000100"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 3,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 2,
+      "success_rate": 0.2,
+      "successes": "0100010000"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 4,
+      "shard": "s1",
+      "episodes_used": 10,
+      "success_count": 3,
+      "success_rate": 0.3,
+      "successes": "0000101100"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 5,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 3,
+      "success_rate": 0.3,
+      "successes": "0100010001"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 6,
+      "shard": "s2",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "0001010011"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 7,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "0101110011"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 8,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 4,
+      "success_rate": 0.4,
+      "successes": "1100010010"
+    },
+    {
+      "model_id": "ver4_pamae_20k",
+      "model_name": "Ver4 PAMAE-style Expert Mixture",
+      "task_id": 9,
+      "shard": "s3",
+      "episodes_used": 10,
+      "success_count": 6,
+      "success_rate": 0.6,
+      "successes": "0011011110"
+    }
+  ]
+}

@@ -1,15 +1,10 @@
-# LIBERO-Spatial SmolVLA Baseline vs MoE Report
+# LIBERO-Spatial SmolVLA Action-Modeling Report
 
 ## Objective
 
-This experiment evaluates whether a lightweight MoE adapter on SmolVLA action tokens improves closed-loop LIBERO-Spatial manipulation performance over a vanilla SmolVLA action expert.
+This experiment evaluates whether lightweight action-modeling modules improve closed-loop LIBERO-Spatial manipulation performance over a vanilla SmolVLA action expert.
 
-The comparison uses the same 20k-step training budget for both policies:
-
-- **Baseline 20k**: SmolVLA fine-tuning on LIBERO-Spatial.
-- **MoE 20k**: SmolVLA with a residual dense MoE adapter inserted on action-token hidden states.
-
-The MoE adapter is implemented in `src/vla_libero_moe/action_moe_adapter.py` and enabled by `scripts/06_train_moe_spatial.sh`.
+The final project version uses **Routed Multi-MLP Adapter** as the main method. It keeps the original SmolVLA action expert Transformer and inserts a residual routed adapter over action-token hidden states before the action expert. The router uses action-token context, action position, and flow timestep to combine multiple MLP branches.
 
 ## Setup
 
@@ -17,111 +12,70 @@ The MoE adapter is implemented in `src/vla_libero_moe/action_moe_adapter.py` and
 - Suite: `libero_spatial`
 - Checkpoint step: `20,000`
 - Rollout tasks: LIBERO-Spatial task ids `0..9`
-- Episodes: `10` episodes per task, `100` total episodes per policy per horizon
+- Episodes: `10` episodes per task, `100` total episodes per policy
+- Closed-loop horizon: `policy.n_action_steps=10`
 - Metric: closed-loop success rate
-- Horizons tested: `policy.n_action_steps in {6, 8, 10}`
 
-For `h=10`, evaluation was executed task-wise to reduce CPU contention. All reported task numbers come from completed standard 10-episode `lerobot-eval` runs and were aggregated into the summary JSON. Some historical filenames still contain words such as `salvage` or `merged`, but the reported results are standard evaluation outputs, not manual labels or partial visual estimates.
+All models below are compared under the same `h10` rollout protocol. For comparability, each task uses the first 10 recorded episodes. This matters for the Ver2 run, whose raw shard outputs included extra episodes for some tasks.
+
+Machine-readable artifacts:
 
 ```text
-results/libero_spatial_horizon_sweep/h10_merged_summary_20260708_225647_plus_20260709_005410.json
+results/libero_spatial_h10_100ep/summary.csv
+results/libero_spatial_h10_100ep/per_task.csv
+results/libero_spatial_h10_100ep/summary.json
+results/libero_spatial_h10_100ep/raw_eval_info/
+results/libero_spatial_h10_100ep/eval_logs/
 ```
+
+## Model Variants
+
+| Model | Description |
+|---|---|
+| Baseline SmolVLA action expert | Vanilla SmolVLA fine-tuning on LIBERO-Spatial. |
+| Ver1 Residual MoE Adapter | Residual routed multi-MLP adapter before the action expert. |
+| Ver2 Action Expert FFN-MoE | Replaces action expert Transformer FFN/MLP blocks with dense MoE FFNs. |
+| Routed Multi-MLP Adapter | Main method. Residual routed adapter with action position and flow timestep routing context. |
+| Ver4 PAMAE-style Expert Mixture | Sparse phase-aware mixture of multiple action expert Transformer copies. |
 
 ## Overall Results
 
-| `n_action_steps` | Baseline 20k | MoE 20k | MoE - Baseline |
-|---:|---:|---:|---:|
-| 6 | `41/100 = 41.0%` | `44/100 = 44.0%` | `+3.0%` |
-| 8 | `44/100 = 44.0%` | `42/100 = 42.0%` | `-2.0%` |
-| 10 | `35/100 = 35.0%` | `48/100 = 48.0%` | `+13.0%` |
+| Model | Success | Rate | Delta vs Baseline |
+|---|---:|---:|---:|
+| Baseline SmolVLA action expert | `44/100` | `44.0%` | `+0.0 pts` |
+| Ver1 Residual MoE Adapter | `43/100` | `43.0%` | `-1.0 pts` |
+| Ver2 Action Expert FFN-MoE | `39/100` | `39.0%` | `-5.0 pts` |
+| **Routed Multi-MLP Adapter** | **`51/100`** | **`51.0%`** | **`+7.0 pts`** |
+| Ver4 PAMAE-style Expert Mixture | `36/100` | `36.0%` | `-8.0 pts` |
+
+The best-performing variant is **Routed Multi-MLP Adapter**, which improves the 20k-step baseline by `+7.0` absolute success-rate points.
 
 ## Per-Task Results
 
-### `n_action_steps = 6`
-
-| Task group | Baseline 20k | MoE 20k |
-|---|---:|---:|
-| 0/1/2 | `15/30 = 50.0%` | `18/30 = 60.0%` |
-| 3/4/5 | `12/30 = 40.0%` | `5/30 = 16.7%` |
-| 6/7 | `8/20 = 40.0%` | `7/20 = 35.0%` |
-| 8/9 | `6/20 = 30.0%` | `14/20 = 70.0%` |
-
-### `n_action_steps = 8`
-
-| Task group | Baseline 20k | MoE 20k |
-|---|---:|---:|
-| 0/1/2 | `15/30 = 50.0%` | `17/30 = 56.7%` |
-| 3/4/5 | `8/30 = 26.7%` | `3/30 = 10.0%` |
-| 6/7 | `14/20 = 70.0%` | `12/20 = 60.0%` |
-| 8/9 | `7/20 = 35.0%` | `10/20 = 50.0%` |
-
-The low `3/4/5` result was rerun and reproduced:
-
-| Task group | Baseline 20k rerun | MoE 20k rerun |
-|---|---:|---:|
-| 3/4/5 | `8/30 = 26.7%` | `3/30 = 10.0%` |
-
-### `n_action_steps = 10`
-
-| Task | Baseline 20k | MoE 20k |
-|---:|---:|---:|
-| 0 | `5/10 = 50.0%` | `5/10 = 50.0%` |
-| 1 | `5/10 = 50.0%` | `5/10 = 50.0%` |
-| 2 | `3/10 = 30.0%` | `6/10 = 60.0%` |
-| 3 | `3/10 = 30.0%` | `2/10 = 20.0%` |
-| 4 | `3/10 = 30.0%` | `2/10 = 20.0%` |
-| 5 | `2/10 = 20.0%` | `0/10 = 0.0%` |
-| 6 | `2/10 = 20.0%` | `8/10 = 80.0%` |
-| 7 | `2/10 = 20.0%` | `8/10 = 80.0%` |
-| 8 | `5/10 = 50.0%` | `6/10 = 60.0%` |
-| 9 | `5/10 = 50.0%` | `6/10 = 60.0%` |
+| Model | Task 0 | Task 1 | Task 2 | Task 3 | Task 4 | Task 5 | Task 6 | Task 7 | Task 8 | Task 9 | Avg |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Baseline SmolVLA action expert | `5/10` | `4/10` | `4/10` | `3/10` | `2/10` | `2/10` | `5/10` | `6/10` | `6/10` | `7/10` | `44.0%` |
+| Ver1 Residual MoE Adapter | `5/10` | `8/10` | `4/10` | `2/10` | `5/10` | `0/10` | `5/10` | `6/10` | `3/10` | `5/10` | `43.0%` |
+| Ver2 Action Expert FFN-MoE | `5/10` | `4/10` | `4/10` | `2/10` | `1/10` | `2/10` | `7/10` | `6/10` | `4/10` | `4/10` | `39.0%` |
+| **Routed Multi-MLP Adapter** | **`8/10`** | **`6/10`** | **`5/10`** | **`6/10`** | **`4/10`** | **`6/10`** | **`3/10`** | **`2/10`** | **`7/10`** | **`4/10`** | **`51.0%`** |
+| Ver4 PAMAE-style Expert Mixture | `5/10` | `2/10` | `1/10` | `2/10` | `3/10` | `3/10` | `4/10` | `6/10` | `4/10` | `6/10` | `36.0%` |
 
 ## Interpretation
 
-The MoE adapter does not uniformly improve performance. It is consistently weak on the `3/4/5` task group, especially task `5`. However, it improves the longer open-loop horizon setting:
+The vanilla baseline already learns coarse reaching and partial object interaction, but it remains brittle across grasp/place phases. The Routed Multi-MLP Adapter gives the best aggregate closed-loop improvement and is especially stronger on tasks `0`, `1`, `2`, `3`, `4`, `5`, and `8` compared with the vanilla baseline.
 
-- At `h=6`, MoE is slightly better: `44%` vs `41%`.
-- At `h=8`, MoE is slightly worse: `42%` vs `44%`.
-- At `h=10`, MoE is clearly better: `48%` vs `35%`.
+The more invasive variants did not help in this run. Ver2 changes the action expert FFNs directly and underperformed the baseline. Ver4 is closer to a sparse expert-mixture design, but at 20k steps it was less stable and reached only `36%`. This makes the Routed Multi-MLP Adapter the best practical method for the current project: it is lightweight, easy to patch into SmolVLA, and gives the strongest measured closed-loop success rate.
 
-The best result among the tested settings is:
+## Reproducibility Notes
 
-```text
-MoE 20k, n_action_steps=10: 48/100 = 48.0%
-```
-
-This suggests the MoE adapter helps some task phases and longer-horizon action execution, but the routing or expert specialization is not yet robust across all spatial tasks.
-
-## Engineering Notes
-
-The `h=10` evaluation was slow because LIBERO/MuJoCo rollout is CPU-heavy. Running eight evaluation processes in parallel caused CPU oversubscription: each `lerobot-eval` process used roughly three CPU cores while GPU utilization remained low. Later task-wise evaluation used single-task runs with OpenMP/MKL thread limits:
-
-```bash
-export OMP_NUM_THREADS=1
-export MKL_NUM_THREADS=1
-export OPENBLAS_NUM_THREADS=1
-export NUMEXPR_NUM_THREADS=1
-```
-
-This made rollout much faster and is recommended for future parallel evaluation.
-
-## Reproducibility Artifacts
-
-Key result files:
-
-```text
-results/libero_spatial_horizon_sweep/h10_partial_salvage_20260708_225647.json
-results/libero_spatial_horizon_sweep/h10_merged_summary_20260708_225647_plus_20260709_005410.json
-results/libero_spatial_horizon_sweep/eval_logs/
-```
-
-Note: the `salvage` / `merged` words in some filenames are legacy run labels. The reported numbers are from completed standard evaluation runs.
+Rollout evaluation is CPU-heavy because LIBERO/MuJoCo simulation dominates wall-clock time. The final 100-episode evaluations were run as four shards to avoid excessive CPU oversubscription while keeping the same per-task episode count.
 
 Relevant code:
 
 ```text
-src/vla_libero_moe/action_moe_adapter.py
-scripts/02_train_smolvla_spatial.sh
-scripts/06_train_moe_spatial.sh
-docs/MANUAL_MOE_PATCH.md
+src/vla_libero_moe/phase_aware_moe_adapter.py
+scripts/08_train_phase_moe_spatial.sh
+docs/MOE_VER2_VER3_PATCH.md
 ```
+
+The implementation file still uses the historical `phase_aware_moe_adapter.py` name for compatibility, but the method name used in the project and report is **Routed Multi-MLP Adapter**.

@@ -10,7 +10,7 @@ Important: this is a **PAMAE-style research prototype**, not an official PAMAE i
 |---|---|---|---|
 | Ver1 | Residual adapter MoE | Before action expert Transformer | Lightweight adapter |
 | Ver2 | FFN-MoE | Inside action expert Transformer FFN | Closest to LLM MoE |
-| Ver3 | Phase-aware adapter MoE | Before action expert Transformer | Best current lightweight phase-aware route |
+| Ver3 | Routed Multi-MLP Adapter | Before action expert Transformer | Best current lightweight routed-adapter route |
 | Ver4 | PAMAE-style action expert MoE | Replaces shared action expert with sparse expert mixture | Closest to PAMAE idea |
 
 ## Architecture
@@ -260,10 +260,10 @@ Note: the current script exposes these as policy config flags. If resume-from-ch
 
 ## Expected behavior
 
-Ver4 is more faithful to the PAMAE idea than Ver3, but it is also more expensive and riskier:
+Ver4 is more faithful to the PAMAE idea than the Routed Multi-MLP Adapter, but it is also more expensive and riskier:
 
 ```text
-Ver3: lightweight and already strong; best first practical route.
+Routed Multi-MLP Adapter: lightweight and already strong; best first practical route.
 Ver4: closer to PAMAE; may need smaller batch size, more steps, and staged training.
 ```
 

@@ -1,0 +1,6 @@
+model_id,model_name,checkpoint_steps,suite,n_action_steps,tasks,episodes_per_task,episodes_total,success_count,success_rate,macro_task_success_rate,min_task_success_rate,max_task_success_rate
+baseline_20k,Baseline SmolVLA action expert,20000,libero_spatial,10,10,10,100,44,0.44,0.44,0.2,0.7
+ver1_residual_moe_20k,Ver1 Residual MoE Adapter,20000,libero_spatial,10,10,10,100,43,0.43,0.43,0.0,0.8
+ver2_ffn_moe_20k,Ver2 Action Expert FFN-MoE,20000,libero_spatial,10,10,10,100,39,0.39,0.39,0.1,0.7
+routed_multi_mlp_adapter_20k,Routed Multi-MLP Adapter,20000,libero_spatial,10,10,10,100,51,0.51,0.51,0.2,0.8
+ver4_pamae_20k,Ver4 PAMAE-style Expert Mixture,20000,libero_spatial,10,10,10,100,36,0.36,0.36,0.1,0.6

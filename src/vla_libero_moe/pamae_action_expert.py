@@ -11,9 +11,10 @@ from torch import nn
 class PAMAEActionExpertMixture(nn.Module):
     """PAMAE-style phase-aware sparse MoE action expert for SmolVLA.
 
-    Ver4 attempts to approximate the PAMAE idea more directly than Ver3:
+    Ver4 attempts to approximate the PAMAE idea more directly than the
+    Routed Multi-MLP Adapter:
 
-    - Ver3: action_time_mlp -> phase-aware MoE adapter -> original action expert Transformer
+    - Routed Multi-MLP Adapter: action_time_mlp -> routed residual MLP adapter -> original action expert Transformer
     - Ver4: action_time_mlp -> K action expert Transformer copies -> sparse phase-aware routing
 
     This module is a research prototype, not an official PAMAE implementation.
