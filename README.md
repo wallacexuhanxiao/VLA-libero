@@ -1,13 +1,13 @@
 # VLA-libero
 
-LeRobot + LIBERO + SmolVLA baseline project, with action-token and action-expert MoE experiments.
+LeRobot + LIBERO + SmolVLA baseline project, with action-token adapters and action-expert MoE experiments.
 
 ## Goal
 
 1. Reproduce official LIBERO evaluation with a known checkpoint.
 2. Fine-tune official SmolVLA on LIBERO-Spatial using LeRobot.
 3. Establish a working closed-loop baseline.
-4. Compare a vanilla SmolVLA action expert against multiple MoE action-modeling variants.
+4. Compare a vanilla SmolVLA action expert against multiple action-modeling variants.
 
 ## Why this repo exists
 
@@ -80,19 +80,19 @@ Largest same-horizon gain:
 n_action_steps=10: MoE 48.0% vs Baseline 35.0%, +13.0 points
 ```
 
-## MoE variants
+## Action-modeling variants
 
 ```text
 Ver1: Residual pre-expert MoE adapter
-      action_time_mlp -> MoE adapter -> original action expert Transformer
+      action_time_mlp -> dense routed multi-MLP adapter -> original action expert Transformer
       script: scripts/06_train_moe_spatial.sh
 
 Ver2: Action expert FFN-MoE
       replace action expert Transformer layer.mlp with dense MoE FFN
       script: scripts/07_train_ffn_moe_spatial.sh
 
-Ver3: CTA-MoE, Chunk-Time-Aware MoE adapter
-      action_time_mlp -> chunk-position/time-aware MoE adapter -> original action expert Transformer
+Ver3: CTRA, Chunk-Time Routed Adapter
+      action_time_mlp -> chunk-position/time-conditioned routed adapter -> original action expert Transformer
       script: scripts/08_train_phase_moe_spatial.sh
 
 Ver4: PAMAE-style sparse phase-aware action expert MoE
@@ -118,7 +118,7 @@ Stable closed-loop LIBERO success-rate baseline
         ↓
 Ver1 residual action-token MoE adapter
         ↓
-Ver3 CTA-MoE routing or Ver2 action-expert FFN-MoE
+Ver3 CTRA routing or Ver2 action-expert FFN-MoE
         ↓
 Ver4 PAMAE-style sparse phase-aware action expert MoE
         ↓
