@@ -91,8 +91,8 @@ Ver2: Action expert FFN-MoE
       replace action expert Transformer layer.mlp with dense MoE FFN
       script: scripts/07_train_ffn_moe_spatial.sh
 
-Ver3: CTRA, Chunk-Time Routed Adapter
-      action_time_mlp -> chunk-position/time-conditioned routed adapter -> original action expert Transformer
+Ver3: Routed Multi-MLP Adapter
+      action_time_mlp -> routed multi-MLP adapter -> original action expert Transformer
       script: scripts/08_train_phase_moe_spatial.sh
 
 Ver4: PAMAE-style sparse phase-aware action expert MoE
@@ -118,7 +118,7 @@ Stable closed-loop LIBERO success-rate baseline
         ↓
 Ver1 residual action-token MoE adapter
         ↓
-Ver3 CTRA routing or Ver2 action-expert FFN-MoE
+Ver3 routed multi-MLP adapter or Ver2 action-expert FFN-MoE
         ↓
 Ver4 PAMAE-style sparse phase-aware action expert MoE
         ↓
