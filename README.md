@@ -27,16 +27,19 @@ scripts/
   06_train_moe_spatial.sh
   07_train_ffn_moe_spatial.sh
   08_train_phase_moe_spatial.sh
+  09_train_pamae_spatial.sh
 docs/
   SOP.md
   experiment_log_template.md
   EXPERIMENT_REPORT.md
   MANUAL_MOE_PATCH.md
   MOE_VER2_VER3_PATCH.md
+  PAMAE_VER4_PATCH.md
 src/vla_libero_moe/
   action_moe_adapter.py
   action_ffn_moe.py
   phase_aware_moe_adapter.py
+  pamae_action_expert.py
 experiments/
   .gitkeep
 results/
@@ -91,12 +94,17 @@ Ver2: Action expert FFN-MoE
 Ver3: Phase/time-aware MoE adapter
       action_time_mlp -> phase-aware MoE adapter -> original action expert Transformer
       script: scripts/08_train_phase_moe_spatial.sh
+
+Ver4: PAMAE-style sparse phase-aware action expert MoE
+      action_time_mlp -> multiple action expert Transformers -> sparse phase-aware router
+      script: scripts/09_train_pamae_spatial.sh
 ```
 
-Patch guide:
+Patch guides:
 
 ```text
 docs/MOE_VER2_VER3_PATCH.md
+docs/PAMAE_VER4_PATCH.md
 ```
 
 ## Research route
@@ -111,6 +119,8 @@ Stable closed-loop LIBERO success-rate baseline
 Ver1 residual action-token MoE adapter
         ↓
 Ver3 phase/time-aware routing or Ver2 action-expert FFN-MoE
+        ↓
+Ver4 PAMAE-style sparse phase-aware action expert MoE
         ↓
 Compare closed-loop success rate under the same official eval
 ```
